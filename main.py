@@ -26,6 +26,7 @@ class Record:
         self.phones.append(Phone(phone))
 
     def remove_phone(self, phone):
+        Phone(phone)
         for p in self.phones:
             if p.value == phone:
                 self.phones.remove(p)
