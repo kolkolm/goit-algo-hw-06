@@ -26,17 +26,20 @@ class Record:
         self.phones.append(Phone(phone))
 
     def remove_phone(self, phone):
-        Phone(phone)
+        self.find_phone(phone)
         for p in self.phones:
             if p.value == phone:
                 self.phones.remove(p)
                 break
     
     def edit_phone(self, old_phone, new_phone):
+        self.find_phone(old_phone)
+        self.find_phone(new_phone)
         self.remove_phone(old_phone)
         self.add_phone(new_phone)
 
     def find_phone(self, phone):
+        Phone(phone)
         for p in self.phones:
             if p.value == phone:
                 return p
