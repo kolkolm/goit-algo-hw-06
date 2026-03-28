@@ -81,7 +81,7 @@ def main():
     print(book)
 
     john = book.find("John")
-    john.edit_phone("2234567890", "1112223333")
+    john.edit_phone("1234567890", "1112223333")
 
     print(john)
 
