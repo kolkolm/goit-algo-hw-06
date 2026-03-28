@@ -26,16 +26,16 @@ class Record:
         self.phones.append(Phone(phone))
 
     def remove_phone(self, phone):
-        self.find_phone(phone)
+        if not self.find_phone(phone):
+            raise ValueError("This phone number does not exist")
         for p in self.phones:
             if p.value == phone:
                 self.phones.remove(p)
                 break
     
     def edit_phone(self, old_phone, new_phone):
-        self.find_phone(old_phone)
-        self.find_phone(new_phone)
         self.remove_phone(old_phone)
+        Phone(new_phone)
         self.add_phone(new_phone)
 
     def find_phone(self, phone):
@@ -53,9 +53,7 @@ class AddressBook(UserDict):
         self.data[obj.name.value] = obj
     
     def find(self, name):
-        if name in self.data:
-            return self.data[name]
-        return None
+        return self.data.get(name)
 
     def delete(self, name):
         self.data.pop(name)
@@ -83,7 +81,7 @@ def main():
     print(book)
 
     john = book.find("John")
-    john.edit_phone("1234567890", "1112223333")
+    john.edit_phone("2234567890", "1112223333")
 
     print(john)
 
